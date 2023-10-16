@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CY LUNCH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* White background */
+        }
+
+        h3 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-size: 50px; /* Larger font size */
+        }
+
+        .container {
+            max-width: 550px;
+            margin: auto;
+            background-color: #e0f0ff; /* Light blue container */
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        label {
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #04AA6D;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 0 auto; /* Center the button */
+            
+        }
+
+        input[type="submit"]:hover {
+            background-color: #08784f;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        figure {
+            text-align: end;
+            margin-top: 20px;
+        }
+        
+        .check-status {
+            position: absolute;
+            bottom: 10px;
+            left: 10px; /* Adjust left position */
+            color: #555;
+            font-size: 25px;
+            
+        }
+        .submit-note {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-top: 10px; /* 調整頂部間距 */
+        }
+    </style>
+</head>
+<body>
+    <h3>晨悅總務點餐系統</h3>
+    <div class="container">
+        <form action="#" method="post" name="google">
+            <label for="fname">名字</label>
+            <input type="text" id="fname" name="name" placeholder="Your Name..." required>
+            
+            <label for="lname">餐點名稱</label>
+            <input type="text" id="lname" name="meal" placeholder="Your Meal..." required>
+            
+            <label for="subject">餐點總金額</label>
+            <input type="text" id="subject" name="price" placeholder="Price of the Meal..." required>
+            
+            <input type="submit" value="Submit" name="submit">
+            <p class="submit-note">Submit 按鈕只需按一次即可點餐 (不要按2次!!)</p>
+
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; Created By Anthony, Aben, Duke, James, Ziv, YC. All Rights Reserved.</p>
+    </footer>
+    
+    <figure>
+        <a href="https://docs.google.com/spreadsheets/d/1efiruCrmfBU79ak4e43Q2gcJ5TP_GW8MSBuvYZp-sYk/edit?usp=sharing">
+            <img src="ttt.png" alt="Spreadsheet">
+        </a>
+    </figure>
+    <p2 class="check-status">右下角點擊 Google Sheet 可以查看自己是否點餐成功!! 感謝使用^^</p2>
+    
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwYy9rdbarNGQh1wiYCNS0MfcB4538Z7Uz4gxZyfEiMcLQIyADdpbxEAcwEX3zsizUK/exec'
+        
+        const form = document.forms['google'];
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("點餐完成! 上傳成功！！！"))
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+</body>
+</html>
